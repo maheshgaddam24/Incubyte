@@ -1,5 +1,5 @@
 {
-	"name": "NYC_Table",
+	"name": "Table_NewYork",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureSqlDatabase1",

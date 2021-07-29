@@ -15,35 +15,35 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "USA_Table",
+						"referenceName": "Table_UnitedStates",
 						"type": "DatasetReference"
 					},
 					"name": "USA"
 				},
 				{
 					"dataset": {
-						"referenceName": "IND_Table",
+						"referenceName": "Table_India",
 						"type": "DatasetReference"
 					},
 					"name": "IND"
 				},
 				{
 					"dataset": {
-						"referenceName": "AU_Table",
+						"referenceName": "Table_Australia",
 						"type": "DatasetReference"
 					},
 					"name": "AU"
 				},
 				{
 					"dataset": {
-						"referenceName": "NYC_Table",
+						"referenceName": "Table_NewYork",
 						"type": "DatasetReference"
 					},
 					"name": "NYC"
 				},
 				{
 					"dataset": {
-						"referenceName": "PHIL_Table",
+						"referenceName": "Table_Philippines",
 						"type": "DatasetReference"
 					},
 					"name": "PHIL"

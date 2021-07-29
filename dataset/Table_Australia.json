@@ -1,5 +1,5 @@
 {
-	"name": "AU_Table",
+	"name": "Table_Australia",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureSqlDatabase1",
