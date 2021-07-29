@@ -164,7 +164,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "AzureSqlTable1",
+						"referenceName": "AzureSqlTable",
 						"type": "DatasetReference"
 					}
 				]

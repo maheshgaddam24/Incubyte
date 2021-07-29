@@ -6,7 +6,7 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "AzureSqlTable1",
+						"referenceName": "AzureSqlTable",
 						"type": "DatasetReference"
 					},
 					"name": "AllCustomers"
