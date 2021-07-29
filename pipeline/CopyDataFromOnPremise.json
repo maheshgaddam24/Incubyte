@@ -158,7 +158,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "SqlServerTable1",
+						"referenceName": "SqlServerOnPremise",
 						"type": "DatasetReference"
 					}
 				],
