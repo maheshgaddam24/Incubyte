@@ -1,0 +1,60 @@
+{
+	"name": "Customer_Split",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "AzureSqlTable1",
+						"type": "DatasetReference"
+					},
+					"name": "AllCustomers"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "USA_Table",
+						"type": "DatasetReference"
+					},
+					"name": "USA"
+				},
+				{
+					"dataset": {
+						"referenceName": "IND_Table",
+						"type": "DatasetReference"
+					},
+					"name": "IND"
+				},
+				{
+					"dataset": {
+						"referenceName": "AU_Table",
+						"type": "DatasetReference"
+					},
+					"name": "AU"
+				},
+				{
+					"dataset": {
+						"referenceName": "NYC_Table",
+						"type": "DatasetReference"
+					},
+					"name": "NYC"
+				},
+				{
+					"dataset": {
+						"referenceName": "PHIL_Table",
+						"type": "DatasetReference"
+					},
+					"name": "PHIL"
+				}
+			],
+			"transformations": [
+				{
+					"name": "ConditionalSplit1"
+				}
+			],
+			"script": "source(output(\n\t\tName as string,\n\t\tCust_ID as string,\n\t\tOpen_Date as date,\n\t\tConsul_Date as date,\n\t\tVAC_ID as string,\n\t\tDR_Name as string,\n\t\tState as string,\n\t\tCountry as string,\n\t\tDOB as date,\n\t\tFLAG as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table',\n\tpartitionBy('hash', 1)) ~> AllCustomers\nAllCustomers split(startsWith(Country,'USA'),\n\tstartsWith(Country,'IND'),\n\tstartsWith(Country,'PHIL'),\n\tstartsWith(Country,'NYC'),\n\tstartsWith(Country,'AU'),\n\tdisjoint: true,\n\tpartitionBy('hash', 1)) ~> ConditionalSplit1@(CustomersFromUSA, CustomersFromIND, CustomersFromPHIL, CustomersFromNYC, CustomersFromAU)\nConditionalSplit1@CustomersFromUSA sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\tformat: 'table',\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError',\n\tpartitionBy('hash', 1)) ~> USA\nConditionalSplit1@CustomersFromIND sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\tformat: 'table',\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError',\n\tpartitionBy('hash', 1)) ~> IND\nConditionalSplit1@CustomersFromAU sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\tformat: 'table',\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError',\n\tpartitionBy('hash', 1)) ~> AU\nConditionalSplit1@CustomersFromNYC sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\tformat: 'table',\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError',\n\tpartitionBy('hash', 1)) ~> NYC\nConditionalSplit1@CustomersFromPHIL sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\tformat: 'table',\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError',\n\tpartitionBy('hash', 1)) ~> PHIL"
+		}
+	}
+}

@@ -1,0 +1,16 @@
+{
+	"name": "CustomersFromUSA",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SqlServer",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "CustomersFromUSA"
+		}
+	}
+}
