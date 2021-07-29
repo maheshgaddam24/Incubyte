@@ -44,31 +44,11 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/AU_Table')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureSqlDatabase1",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "AU_Customers"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabase1')]"
-			]
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/AzureSqlTable')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
+				"description": "Intermediate table",
 				"linkedServiceName": {
 					"referenceName": "AzureSqlDatabase1",
 					"type": "LinkedServiceReference"
@@ -127,7 +107,28 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/IND_Table')]",
+			"name": "[concat(parameters('factoryName'), '/Table_Australia')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "AU_Customers"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabase1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Table_India')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -148,7 +149,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/NYC_Table')]",
+			"name": "[concat(parameters('factoryName'), '/Table_NewYork')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -169,7 +170,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/PHIL_Table')]",
+			"name": "[concat(parameters('factoryName'), '/Table_Philippines')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -190,7 +191,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/USA_Table')]",
+			"name": "[concat(parameters('factoryName'), '/Table_UnitedStates')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -315,35 +316,35 @@
 					"sinks": [
 						{
 							"dataset": {
-								"referenceName": "USA_Table",
+								"referenceName": "Table_UnitedStates",
 								"type": "DatasetReference"
 							},
 							"name": "USA"
 						},
 						{
 							"dataset": {
-								"referenceName": "IND_Table",
+								"referenceName": "Table_India",
 								"type": "DatasetReference"
 							},
 							"name": "IND"
 						},
 						{
 							"dataset": {
-								"referenceName": "AU_Table",
+								"referenceName": "Table_Australia",
 								"type": "DatasetReference"
 							},
 							"name": "AU"
 						},
 						{
 							"dataset": {
-								"referenceName": "NYC_Table",
+								"referenceName": "Table_NewYork",
 								"type": "DatasetReference"
 							},
 							"name": "NYC"
 						},
 						{
 							"dataset": {
-								"referenceName": "PHIL_Table",
+								"referenceName": "Table_Philippines",
 								"type": "DatasetReference"
 							},
 							"name": "PHIL"
@@ -359,11 +360,11 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/AzureSqlTable')]",
-				"[concat(variables('factoryId'), '/datasets/USA_Table')]",
-				"[concat(variables('factoryId'), '/datasets/IND_Table')]",
-				"[concat(variables('factoryId'), '/datasets/AU_Table')]",
-				"[concat(variables('factoryId'), '/datasets/NYC_Table')]",
-				"[concat(variables('factoryId'), '/datasets/PHIL_Table')]"
+				"[concat(variables('factoryId'), '/datasets/Table_UnitedStates')]",
+				"[concat(variables('factoryId'), '/datasets/Table_India')]",
+				"[concat(variables('factoryId'), '/datasets/Table_Australia')]",
+				"[concat(variables('factoryId'), '/datasets/Table_NewYork')]",
+				"[concat(variables('factoryId'), '/datasets/Table_Philippines')]"
 			]
 		},
 		{
