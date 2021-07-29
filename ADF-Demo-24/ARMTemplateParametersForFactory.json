@@ -5,10 +5,10 @@
 		"factoryName": {
 			"value": "ADF-Demo-24"
 		},
-		"SqlServer_connectionString": {
+		"AzureSqlDatabase1_connectionString": {
 			"value": ""
 		},
-		"AzureSqlDatabase1_connectionString": {
+		"SqlServer_connectionString": {
 			"value": ""
 		}
 	}

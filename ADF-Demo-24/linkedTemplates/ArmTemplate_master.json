@@ -7,13 +7,13 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "ADF-Demo-24"
 		},
-		"SqlServer_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'SqlServer'"
-		},
 		"AzureSqlDatabase1_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabase1'"
+		},
+		"SqlServer_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'SqlServer'"
 		},
 		"containerUri": {
 			"type": "string",
